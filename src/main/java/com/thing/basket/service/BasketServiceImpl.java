@@ -12,7 +12,7 @@ public class BasketServiceImpl implements BasketService{
 
     @Override
     public Integer countBasket(Integer itemId) {
-        int count = 1;
+        int count = 2;
         return count;
     }
 }
