@@ -1,6 +1,13 @@
 package com.thing.basket.service;
 
-public interface BasketService {
+import com.thing.basket.domain.Basket;
 
-    public Integer countBasket(Integer itemId);
+import java.util.List;
+
+public interface BasketService {
+    Integer countBasket(Integer itemId);
+    void addBasket(int clientIndex, int itemId);
+    void deleteBasket(int clientIndex, int itemId);
+    boolean existBasket(int clientIndex, int itemId);
+    List<Basket> getClientBaskets(int clientIndex);
 }
