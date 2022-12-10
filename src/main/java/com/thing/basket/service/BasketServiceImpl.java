@@ -1,5 +1,7 @@
 package com.thing.basket.service;
 import com.thing.basket.domain.Basket;
+import com.thing.basket.exception.BasketNotFoundException;
+import com.thing.basket.exception.DuplicateBasketException;
 import com.thing.basket.repository.BasketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,7 @@ public class BasketServiceImpl implements BasketService{
     public void addBasket(int clientIndex, int itemId) {
         List<Basket> baskets = basketRepository.findByClientIndexAndItemId(clientIndex, itemId);
         if (!baskets.isEmpty()) {
-            return;
+            throw new DuplicateBasketException();
         }
         Basket basket = new Basket(null, clientIndex, itemId);
         basketRepository.save(basket);
@@ -29,7 +31,7 @@ public class BasketServiceImpl implements BasketService{
     public void deleteBasket(int clientIndex, int itemId) {
         List<Basket> baskets = basketRepository.findByClientIndexAndItemId(clientIndex, itemId);
         if (baskets.isEmpty()) {
-            return;
+            throw new BasketNotFoundException();
         }
         Basket basket = baskets.get(0);
         basketRepository.delete(basket);
