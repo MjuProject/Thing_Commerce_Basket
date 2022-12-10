@@ -1,5 +1,4 @@
 package com.thing.basket.dto;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -10,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class APIResponseDTO<T> {
-
     private boolean success;
     private int code;
     private String message;
@@ -21,15 +19,12 @@ public class APIResponseDTO<T> {
         this.code = code;
         this.message = message;
     }
-
     public static APIResponseDTO success(){
         return new APIResponseDTO(true, 0, "성공하였습니다.");
     }
-
     public static <T> APIResponseDTO success(T data){
         return new APIResponseDTO(true, 0, "성공하였습니다.", data);
     }
-
     public static APIResponseDTO fail(int code, String message){
         return new APIResponseDTO(false, code, message);
     }

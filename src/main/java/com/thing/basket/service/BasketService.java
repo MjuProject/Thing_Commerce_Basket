@@ -1,7 +1,5 @@
 package com.thing.basket.service;
-
 import com.thing.basket.domain.Basket;
-
 import java.util.List;
 
 public interface BasketService {

@@ -1,7 +1,5 @@
 package com.thing.basket.domain;
-
 import lombok.*;
-
 import javax.persistence.*;
 
 @Getter
@@ -11,7 +9,6 @@ import javax.persistence.*;
 @Builder
 @Entity(name = "Basket")
 public class Basket {
-
     @Id
     @Column(name = "basket_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +17,4 @@ public class Basket {
     private Integer clientIndex;
     @Column(name = "item_id")
     private Integer itemId;
-
 }
